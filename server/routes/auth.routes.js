@@ -1,10 +1,11 @@
 //VARIABLES
-const express = require("express")
-const router = express.Router()
-const bcrypt = require('bcrypt')
-const jwt    = require("jsonwebtoken")
+const express      = require("express")
+const router       = express.Router()
+const authServices = require('../services/auth.services')
 
-//MODELS
-const User = require('./../models/User.model')
+//ROUTES
+router.post('/signup', authServices.signUp)
+router.post('/login', authServices.logIn)
+
 
 module.exports = router
