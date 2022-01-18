@@ -4,6 +4,6 @@ const router       = express.Router()
 const userServices = require('./../services/user.services')
 
 //ROUTES
-router.put('/add/:enum/:id', userServices.addMovie)
+router.put('/add/:category/:id', userServices.addMovie)
 
 module.exports = router
