@@ -1,8 +1,11 @@
 
 //SERVICES
 const addMovie = async (req, res) => {
+
+
+
     try {
-        console.log('ok')
+        res.json('ok')
     } catch {
         res.status(500).json({ message: "Internal Server Error" })
     }

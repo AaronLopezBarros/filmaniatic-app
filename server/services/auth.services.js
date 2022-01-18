@@ -95,4 +95,9 @@ const logIn = async (req, res) => {
     }
 }
 
-module.exports = {signUp, logIn}
+const verify = async (req, res) => {
+    console.log(`req.payload`, req.payload)
+    res.status(200).json(req.payload)
+}
+
+module.exports = {signUp, logIn, verify}
