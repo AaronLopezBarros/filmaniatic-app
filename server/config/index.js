@@ -1,15 +1,10 @@
 //VARIABLES
 const express = require("express")
 const logger  = require("morgan")
-const cors    = require("cors")
 
 //MIDDLEWARE CONFIGURATION
 module.exports = (app) => {
     app.set("trust proxy", 1)
-    
-    app.use(
-        cors({ origin: process.env.ORIGIN || "http://localhost:3000"})
-    )
 
     app.use(logger("dev"))
     
