@@ -26,12 +26,27 @@ const signUp = async (req, res) => {
             return
         }
 
+        if(password.length < 8) {
+            res.status(500).json({ message: "Your password needs to be at least 8 characters long."})
+            return
+        }
+
+        const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+        if (!regex.test(password)) {
+          res.status(500).json( {
+            errorMessage:
+              "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
+          });
+          return 
+        }
+
         const salt = bcrypt.genSaltSync(saltRounds)
         const hashedPassword = bcrypt.hashSync(password, salt)
 
         const createUser = await User.create({ username, password: hashedPassword })
 
-        res.status(200).json({msg: 'user created successfully', createUser})
+        res.status(200).json({msg: "user created successfully", createUser})
 
     } catch {
         res.status(500).json({ message: "Internal Server Error" })
@@ -84,4 +99,5 @@ const verify = async (req, res) => {
     console.log(`req.payload`, req.payload)
     res.status(200).json(req.payload)
 }
+
 module.exports = {signUp, logIn, verify}

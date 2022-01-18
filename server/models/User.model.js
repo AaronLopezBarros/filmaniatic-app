@@ -13,6 +13,8 @@ const userSchema = new Schema(
     },
     favs_movies: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
     pending_movies: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
+    viewed_movies: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
+
   },
   {
     timestamps: true,
