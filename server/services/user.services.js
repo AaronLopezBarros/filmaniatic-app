@@ -8,7 +8,7 @@ const addMovie = async (req, res) => {
     const { user } = req.body
 
     try {
-
+        
     } catch {
         res.status(500).json({ message: "Internal Server Error" })
     }
