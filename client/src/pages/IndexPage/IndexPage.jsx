@@ -1,25 +1,36 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import axios from "axios";
+import { useEffect, useState } from "react";
+import MovieCard from "../../components/MovieCard/MovieCard";
+import { Container } from "@mui/material";
+import "./IndexPage.css";
 
 const IndexPage = () => {
+  let API_URL = `${process.env.REACT_APP_SERVER_URL}/popular/movies`;
+  const [data, setData] = useState();
+  const [loadData, setLoadData] = useState(false);
 
-    let API_URL = `${process.env.REACT_APP_SERVER_URL}/popular/movies`
-    const [data, setData] = useState()
+  useEffect(() => {
+    const axiosCall = async () => {
+      const dataFromAxios = await axios.get(API_URL);
+      setData(dataFromAxios.data.popularMovies);
+      setLoadData(true);
+    };
+    axiosCall();
+  }, []);
 
-    useEffect( () => {
-        const axiosCall = async () => {
-            const dataFromAxios = await axios.get(API_URL)
-            setData(dataFromAxios.data.popularMovies)
-        }
-        axiosCall()
-    }, [])
-
-    console.log(data)
-    return (
-        data.map((movie) => {
-            return <p>{movie.title}</p>
-        })
+  return (
+    loadData && (
+      <Container sx={{ mt: 12 }}>
+        {data.map((movie) => {
+          return (
+            <div key={movie.id} className="containerMovieCards">
+              <MovieCard sx={{ flex: "wrap" }} movie={movie} />
+            </div>
+          );
+        })}
+      </Container>
     )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

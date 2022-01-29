@@ -7,7 +7,7 @@ const popularMovies = async (req, res) => {
     try {
         const axiosCall = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
         const popularMovies = axiosCall.data.results
-        console.log('ok')
+
         res.status(200).json({popularMovies})
     } catch {
         res.status(500).json({ message: "Internal Server Error" })
