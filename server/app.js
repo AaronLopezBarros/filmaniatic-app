@@ -15,7 +15,7 @@ const userRoutes    = require('./routes/user.routes')
 require("./config")(app)
 
 //ROUTES
-app.use("/api", authRoutes)
+app.use("/api/auth", authRoutes)
 app.use("/api", moviesRoutes)
 app.use("/api", userRoutes)
 

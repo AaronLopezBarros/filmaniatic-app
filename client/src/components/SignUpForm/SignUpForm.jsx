@@ -4,6 +4,8 @@ import { FormControl } from "@mui/material";
 import { InputLabel } from "@mui/material";
 import { Input } from "@mui/material";
 import { FormHelperText } from "@mui/material";
+import signup from "../../services/auth.service";
+import { Button } from "@mui/material";
 
 const SignUpForm = () => {
   const [signupForm, setSignupForm] = useState({
@@ -17,10 +19,18 @@ const SignUpForm = () => {
     const { name, value } = e.target;
     setSignupForm({ ...setSignupForm, [name]: value });
   };
-  console.log(signupForm);
+
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      console.log('ok')
+    const credentials = { username, password }
+
+    signup(credentials)
+  }
+
   return (
     <Container>
-      <FormControl sx={{ mt: 12 }}>
+      <FormControl sx={{ mt: 12 }} onSubmit={handleSubmit}>
         <InputLabel htmlFor="my-input">Username</InputLabel>
         <Input
           type="text"
@@ -31,7 +41,7 @@ const SignUpForm = () => {
           aria-describedby="my-helper-text-username"
         />
       </FormControl>
-      <FormControl sx={{ mt: 12 }}>
+      <FormControl sx={{ mt: 12 }} onSubmit={handleSubmit}>
         <InputLabel htmlFor="my-input">Password</InputLabel>
         <Input
           type="password"

@@ -9,7 +9,7 @@ const User = require('./../models/User.model')
 
 //SERVICES
 const signUp = async (req, res) => {
-
+console.log(req.body)
     const { username, password } = req.body
 
     try {
