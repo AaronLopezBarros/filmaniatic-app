@@ -87,18 +87,24 @@ export default function SearchAppBar() {
               setOpen(false);
             }}
           >
+          <Link to="/">
             FILMANIATIC
+          </Link>
             <Divider />
-
+            <Link to="/signup">
+              Sign Up
+            </Link>
           </SwipeableDrawer>
+
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             FILMANIATIC
           </Typography>
+    
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

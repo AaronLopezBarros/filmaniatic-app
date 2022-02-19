@@ -1,9 +1,11 @@
-import './PopularBanner.css'
+import "./PopularBanner.css";
 const PopularBanner = () => {
 
-    return (
-        <h1 className="neonText">Popular Movies</h1>
-    )
-}
+  return (
+    <div className="banner">
+      <h1 className="neonText">Popular Movies</h1>
+    </div>
+  );
+};
 
-export default PopularBanner
+export default PopularBanner;
