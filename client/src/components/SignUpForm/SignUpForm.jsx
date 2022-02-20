@@ -1,11 +1,14 @@
-import { Container } from "@mui/material";
+import {
+  Container,
+  FormControl,
+  Input,
+  InputLabel,
+  FormHelperText,
+  Button,
+  Grid,
+} from "@mui/material";
 import { useState } from "react";
-import { FormControl } from "@mui/material";
-import { InputLabel } from "@mui/material";
-import { Input } from "@mui/material";
-import { FormHelperText } from "@mui/material";
 import signup from "../../services/auth.service";
-import { Button } from "@mui/material";
 
 const SignUpForm = () => {
   const [signupForm, setSignupForm] = useState({
@@ -21,42 +24,50 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = (e) => {
-      e.preventDefault()
-      console.log('ok')
-    const credentials = { username, password }
+    e.preventDefault();
+    const credentials = { username, password };
+    console.log(credentials);
 
-    signup(credentials)
-  }
+    signup(credentials);
+  };
 
   return (
     <Container>
-      <FormControl sx={{ mt: 12 }} onSubmit={handleSubmit}>
-        <InputLabel htmlFor="my-input">Username</InputLabel>
-        <Input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleInputChange}
-          id="my-input-username"
-          aria-describedby="my-helper-text-username"
-        />
-      </FormControl>
-      <FormControl sx={{ mt: 12 }} onSubmit={handleSubmit}>
-        <InputLabel htmlFor="my-input">Password</InputLabel>
-        <Input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleInputChange}
-          id="my-input"
-          aria-describedby="my-helper-text"
-          id="my-input-password"
-          aria-describedby="my-helper-text-password"
-        />
-        <FormHelperText id="my-helper-text">
-          We'll never share your password.
-        </FormHelperText>
-      </FormControl>
+<form onSubmit={handleSubmit}>
+        <Grid>
+          <FormControl sx={{ mt: 12 }}>
+            <InputLabel htmlFor="username">Username</InputLabel>
+            <Input
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleInputChange}
+              id="username"
+            />
+          </FormControl>
+        </Grid>
+        <Grid>
+          <FormControl sx={{ mt: 12 }}>
+            <InputLabel htmlFor="password">Password</InputLabel>
+            <Input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+              id="password"
+              aria-describedby="password-helper"
+            />
+            <FormHelperText id="password-helper">
+              We'll never share your password.
+            </FormHelperText>
+          </FormControl>
+        </Grid>
+        <Grid>
+          <Button type="submit">Sign Up</Button>
+        </Grid>y
+</form>
+
+
     </Container>
   );
 };

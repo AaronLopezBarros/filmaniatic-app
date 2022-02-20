@@ -70,12 +70,11 @@ export default function SearchAppBar() {
               color="inherit"
               aria-label="open drawer"
               sx={{ mr: 2 }}
-            >
-              <MenuIcon
-                onClick={() => {
+              onClick={() => {
                   setOpen(true);
                 }}
-              />
+            >
+              <MenuIcon/>
             </IconButton>
           </Hidden>
           <SwipeableDrawer
